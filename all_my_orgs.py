@@ -163,7 +163,7 @@ print("-------------------")
 
 if not shortform:
 	fmt = '%-23s %-15s %-6s'
-	child_fmt = "\t\t%-20s %-20s"
+	child_fmt = "\t\t%-20s %-10s %-20s"
 	print()
 	print(fmt % ("Organization's Profile", "Root Account", "ALZ"))
 	print(fmt % ("----------------------", "------------", "---"))
@@ -179,10 +179,10 @@ if not shortform:
 		else:
 			fmt = f"%-23s {Style.BRIGHT}%-15s {Style.RESET_ALL}%-6s"
 		print(fmt % (profile, aws_acct.MgmtAccount, landing_zone))
-		print(child_fmt % ("Child Account Number", "Child Email Address"))
+		print(child_fmt % ("Child Account Number", "Email Address", "Account Status"))
 		# for account in sorted(child_accounts):
 		for account in child_accounts:
-			print(child_fmt % (account['AccountId'], account['AccountEmail']))
+			print(child_fmt % (account['AccountId'], account['AccountStatus'], account['AccountEmail']))
 	print()
 	print("Number of Organizations:", len(RootProfiles))
 	print("Number of Organization Accounts:", NumOfAccounts)
